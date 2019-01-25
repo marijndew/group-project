@@ -1,16 +1,16 @@
 {
-  "name": "group-project",
+  "name": "groupp-project",
   "version": "1.0.0",
-  "description": "",
+  "description": "Livio's Seventh Assignment",
   "main": "app.js",
-  "dependencies": {
-    "ejs": "^2.6.1",
-    "express": "^4.16.4"
-  },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Livio Nocchi",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "instagram-node": "^0.5.8"
+  }
 }
