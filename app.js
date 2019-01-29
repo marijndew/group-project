@@ -63,7 +63,7 @@ app.get('/profile', (req, res) => {
         function (err, result, pagination, remaining, limit) {
             if (err) res.json(err);
             // pass the json file retrieved to our ejs template
-            console.log(result[0].user.full_name);
+            console.log(result);
             res.render('profile', {
                 instagram: result
             });
