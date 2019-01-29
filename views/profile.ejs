@@ -1,32 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<style>
-  #map {
-    height: 100%;
-  }
+  <!-- <link rel='stylesheet' href='public/css/style.css' type='text/css'> -->
+  </link>
+  <style>
+    /* Always set the map height explicitly to define the size of the div
+* element that contains the map. */
+    #map {
+      height: 100%;
+    }
 
-  /* Optional: Makes the sample page fill the window. */
-  html,
-  body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
-</style>
+    /* Optional: Makes the sample page fill the window. */
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
 
 <body>
   <div id="map">
-    <% instagram.forEach((insta) => { %>
-    <img src="<%= insta.images.thumbnail.url %>" alt="">
-    <% }) %>
+    <p id='One'>
+      <%
+      let palces = [];
+      instagram.forEach((insta)=> {
+        places.push([insta.images.thumbnail.url, insta.location.latitude, insta.location.longitude, insta.location.name])
+      }) %>
+    </p>
   </div>
+
+  <script>
+    function initMap() {
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 3,
+        center: {
+          lat: -33.9,
+          lng: 151.2
+        }
+      });
+      setMarkers(map);
+    }
+    console.log(document.getElementById('One').innerHTML);
+
+    document.getElementById('One').forEach((place) => {
+      function setMarkers(map) {
+        let image = {
+          url: place[0],
+          scaledSize: new google.maps.Size(64, 64),
+          origin: new google.maps.Point(0, 0),
+          anchor: new google.maps.Point(32, 32)
+        };
+
+        let shape = {
+          coords: [1, 1, 1, 20, 18, 20, 18, 1],
+          type: 'poly'
+        };
+
+        let marker = new google.maps.Marker({
+          position: {
+            lat: place[1],
+            lng: place[2]
+          },
+          map: map,
+          icon: image,
+          shape: shape,
+          title: place[3]
+        });
+      }
+    })
+  </script>
+  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSu-LEt-PIubdYxQeXAgtv9xUAm8mC2-M&callback=initMap">
+  </script>
 </body>
+</script>
 
 </html>

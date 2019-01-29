@@ -24,7 +24,6 @@ app.get('/', (req, res) => {
   if (accessToken) {
     res.redirect('/profile')
   }
-
   res.render('index')
 })
 
@@ -57,17 +56,26 @@ app.get('/profile', (req, res) => {
   ig.use({
     access_token: accessToken
   });
-  console.log(`Your access token is ${accessToken}`);
 
   ig.user_media_recent(`${accessToken.split('.')[0]}`,
     function(err, result, pagination, remaining, limit) {
       if (err) res.json(err);
       // pass the json file retrieved to our ejs template
-      console.log(result[0].user.full_name);
+
       res.render('profile', {
         instagram: result
       });
     });
 });
+
+// // Manages the log-out button
+// app.get('/logout', (req, res) => {
+//   if (accessToken.length != 0) {
+//     accessToken = '';
+//     res.redirect('/');
+//   } else {
+//     res.redirect('/');
+//   }
+// });
 
 app.listen(port, console.log(`Eavesdropping on port ${port}`));
