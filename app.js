@@ -1,8 +1,7 @@
-const express = require('express'),
-  path = require('path'),
-  port = process.env.PORT || 3000,
-  ig = require('instagram-node').instagram(),
-  app = express();
+const express = require('express');
+const app = express();
+const ig = require('instagram-node').instagram();
+const port = process.env.PORT || 3000;
 
 //location of our static files(css,js,etc..)
 app.use(express.static(__dirname + '/views'));
