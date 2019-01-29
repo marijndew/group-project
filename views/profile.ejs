@@ -22,9 +22,11 @@
 </style>
 
 <body>
-  <center>
-    <a href="/authorize"><button>click me to log in</button></a>
-  </center>
+  <div id="map">
+    <% instagram.forEach((insta) => { %>
+    <img src="<%= insta.images.thumbnail.url %>" alt="">
+    <% }) %>
+  </div>
 </body>
 
 </html>
