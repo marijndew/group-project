@@ -22,6 +22,9 @@
 </style>
 
 <body>
+      <form action="/logout" method="get" class="form-inline">
+            <button class="btn btn-outline-success my-2 my-sm-0" href="/logout" type="submit">Log out</button>
+        </form>
   <div id="map">
     <% instagram.forEach((insta) => { %>
     <img src="<%= insta.images.thumbnail.url %>" alt="">
