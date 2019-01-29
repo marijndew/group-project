@@ -58,12 +58,11 @@ app.get('/profile', (req, res) => {
     access_token: accessToken
   });
   console.log(`Your access token is ${accessToken}`);
-  //console.log(`Your user id is ${userId}`);
 
   ig.user_media_recent(`${accessToken.split('.')[0]}`,
     function(err, result, pagination, remaining, limit) {
       if (err) res.json(err);
-      // pass the json file gotten to our ejs template
+      // pass the json file retrieved to our ejs template
       console.log(result[0].user.full_name);
       res.render('profile', {
         instagram: result
