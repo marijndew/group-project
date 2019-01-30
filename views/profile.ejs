@@ -1,35 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<style>
-  #map {
-    height: 100%;
-  }
+    <!-- <link rel='stylesheet' href='public/css/style.css' type='text/css'> 
+  </link>-->
+    <style>
+        #map {
+            height: 100%;
+        }
 
-  /* Optional: Makes the sample page fill the window. */
-  html,
-  body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
-</style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+    </style>
+</head>
 
 <body>
-      <form action="/logout" method="get" class="form-inline">
-            <button class="btn btn-outline-success my-2 my-sm-0" href="/logout" type="submit">Log out</button>
-        </form>
-  <div id="map">
-    <% instagram.forEach((insta) => { %>
-    <img src="<%= insta.images.thumbnail.url %>" alt="">
-    <% }) %>
-  </div>
+    <div id="map"></div>
+    <div id="places">
+        <%=places%>
+    </div>
+
+
+
+    <script>
+        let coords = document.getElementById("places").innerHTML;
+        let parts = coords.split(",");
+        console.log(parts)
+
+        let finalResult = []
+        while (parts.length) {
+            let newArr = parts.splice(0, 3);
+            finalResult.push(newArr);
+        }
+        console.log(finalResult);
+
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 3,
+                center: {
+                    lat: -33.9,
+                    lng: 151.2
+                }
+            });
+
+            // markerCluster
+            var markerCluster = new MarkerClusterer(map, markers, {
+                imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
+            });
+
+            setMarkers(map);
+        }
+
+        /*var places = [
+            ['B. Building 2', 52.340999, 4.823576],
+            ['Bondi Beach', -33.890542, 151.274856, 4],
+            ['Coogee Beach', -33.923036, 151.259052, 5],
+            ['Cronulla Beach', -34.028249, 151.157507, 3],
+            ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
+            ['Maroubra Beach', -33.950198, 151.259302, 1]
+        ];*/
+
+        let markers = ""
+
+        function setMarkers(map) {
+            var image = {
+                url: 'https://secure.i.telegraph.co.uk/multimedia/archive/01349/shark_1349817c.jpg',
+                scaledSize: new google.maps.Size(64, 64),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(32, 32)
+            };
+
+            var shape = {
+                coords: [1, 1, 1, 20, 18, 20, 18, 1],
+                type: 'poly'
+            };
+            
+            for (var i = 0; i < finalResult.length; i++) {
+                var place = finalResult[i];
+                var marker = new google.maps.Marker({
+                    position: {
+                        lat: parseInt(place[1]),
+                        lng: parseInt(place[2])
+                    },
+                    map: map,
+                    icon: image,
+                    shape: shape
+                });
+            }
+        }
+
+    </script>
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=PUTKEYHERE&callback=initMap">
+    </script>
 </body>
 
 </html>
