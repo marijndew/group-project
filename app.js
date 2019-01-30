@@ -62,20 +62,29 @@ app.get('/profile', (req, res) => {
       if (err) res.json(err);
       // pass the json file retrieved to our ejs template
 
+      let places = [];
+      result.forEach((insta) => {
+        places.push([insta.images.thumbnail.url, insta.location.latitude, insta.location.longitude])
+      })
+      /*
+                  console.log(places);
+      */
+
       res.render('profile', {
-        instagram: result
-      });
+        places: places
+      })
     });
 });
 
-// // Manages the log-out button
-// app.get('/logout', (req, res) => {
-//   if (accessToken.length != 0) {
-//     accessToken = '';
-//     res.redirect('/');
-//   } else {
-//     res.redirect('/');
-//   }
-// });
+
+// Manages the log-out button
+/*app.get('/logout', (req, res) => {
+    if (accessToken.length != 0) {
+        accessToken = '';
+        res.redirect('/');
+    } else {
+        res.redirect('/');
+    }
+});*/
 
 app.listen(port, console.log(`Eavesdropping on port ${port}`));
