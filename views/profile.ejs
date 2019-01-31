@@ -2,7 +2,8 @@
 <html>
 
 <head>
-    <!-- <link rel='stylesheet' href='public/css/style.css' type='text/css'> 
+
+    <!-- <link rel='stylesheet' href='public/css/style.css' type='text/css'>
   </link>-->
     <style>
         #map {
@@ -21,7 +22,7 @@
 
 <body>
     <div id="map"></div>
-    <div id="places">
+    <div id="places" style="display:none">
         <%=places%>
     </div>
 
@@ -30,29 +31,24 @@
     <script>
         let coords = document.getElementById("places").innerHTML;
         let parts = coords.split(",");
-        console.log(parts)
 
         let finalResult = []
         while (parts.length) {
             let newArr = parts.splice(0, 3);
             finalResult.push(newArr);
         }
-        console.log(finalResult);
+
+        console.log(finalResult)
+
 
         function initMap() {
             var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 3,
+                zoom: 4,
                 center: {
-                    lat: -33.9,
-                    lng: 151.2
+                    lat: 52.9,
+                    lng: 101.2
                 }
             });
-
-            // markerCluster
-            var markerCluster = new MarkerClusterer(map, markers, {
-                imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
-            });
-
             setMarkers(map);
         }
 
@@ -60,9 +56,7 @@
 
         function setMarkers(map) {
 
-
-            for (var i = 0; i < finalResult.length; i++) {
-                var place = finalResult[i];
+            finalResult.forEach((place) => {
 
                 var image = {
                     url: place[0],
@@ -76,16 +70,15 @@
                     type: 'poly'
                 };
 
+                var myLatlng = new google.maps.LatLng(place[1], place[2]);
+
                 var marker = new google.maps.Marker({
-                    position: {
-                        lat: parseInt(place[1]),
-                        lng: parseInt(place[2])
-                    },
+                    position: myLatlng,
                     map: map,
                     icon: image,
                     shape: shape
                 });
-            }
+            })
         }
 
     </script>

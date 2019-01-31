@@ -25,6 +25,7 @@ app.get('/', (req, res) => {
         res.redirect('/profile')
     }
     res.render('index')
+
 })
 
 // Authorization process
@@ -74,8 +75,8 @@ app.get('/profile', (req, res) => {
                 places: places
             })
         });
+    console.log(`Your access token is ${accessToken}`);
 });
-
 
 // Manages the log-out button
 /*app.get('/logout', (req, res) => {
