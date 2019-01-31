@@ -5,31 +5,75 @@
   <!-- <link rel='stylesheet' href='public/css/style.css' type='text/css'> -->
   </link>
   <style>
-    /* Always set the map height explicitly to define the size of the div
-* element that contains the map. */
-    #map {
-      height: 100%;
-    }
-
     /* Optional: Makes the sample page fill the window. */
-    html,
-    body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
+    #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #logo {
+        position: absolute;
+        top: 20px;
+        left: 2%;
+        z-index: 5;
+      }
+      #floating-panel-left-top {
+        position: absolute;
+        top: 200px;
+        left: 5%;
+        z-index: 5;
+        background-color: #fff;
+        opacity: 0.8;
+        padding: 5px;
+        border: 1px solid rgb(233, 231, 231);
+        border-radius: 7px;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+        margin-left: -52px;
+      }
+      #floating-panel-left-bottom{
+        position: absolute;
+        top: 50px;
+        left: 20%;
+        right: 30%;
+        z-index: 5;
+        background-color: #fff;
+        opacity: 0.8;
+        padding: 5px;
+        border: 1px solid rgb(233, 231, 231);
+        border-radius: 7px;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+        margin-left: -52px;
+      }
   </style>
 </head>
 
 <body>
   <div id="map"></div>
+  <div id="logo"><img src="images/wanderlust.png" height="152" width="125"></div>
+  <div id="floating-panel-left-top">
+      <p>This is a <b>sample menu</b>,<br> This could <br>show statistics<br>based on the coordinates<br></p>
+    </div>
+  <div id="floating-panel-left-bottom">
+      <p>This is a <b>sample menu</b>,<br></p>
+  </div>
+</body>
   <script>
 
     function initMap() {
-
       var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 3,
-        center: {lat: -28.024, lng: 140.887}
+        zoom: 4,
+        center: {lat: -41.133927, lng: 160.368264},
+        disableDefaultUI: true
       });
 
       // Create an array of alphabetical characters used to label the markers.
@@ -48,9 +92,16 @@
 
       // Add a marker clusterer to manage the markers.
       var markerCluster = new MarkerClusterer(map, markers,
-          {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+          {imagePath: 'images/p'});
     }
+
+    // // Set maxZoom 
+    // map.options.maxZoom = 15;
+    // 
+    
     var locations = [
+
+      {lat: 52.340999, lng: 4.823576},
       {lat: -33.890542, lng: 151.274856},
       {lat: -33.923036, lng: 151.259052},
       {lat: -34.028249, lng: 151.157507},
@@ -76,11 +127,10 @@
       {lat: -43.999792, lng: 170.463352}
     ]
   </script>
-  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+  <script src="images/markerclusterer.js">
   </script>
   <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCI9-Pr7JjD_rWiurHV4AdlhYUdEDk7VbQ&callback=initMap">
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-ZNLSg6yH-H4rbW7iPI1zT2hjhWUs_pI&callback=initMap">
   </script>
-</body>
 </script>
 </html>

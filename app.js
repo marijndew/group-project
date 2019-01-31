@@ -6,6 +6,7 @@ const express = require('express'),
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+app.use('/images', express.static(__dirname + '/images'));
 
 let accessToken = '';
 
@@ -31,6 +32,10 @@ app.get('/handleAuth', (req, res) => {
 
 app.get('/map', (req, res) => {
     res.render('map');
+})
+
+app.get('/mapcluster', (req, res) => {
+    res.render('mapcluster');
 })
 
 // listening to port
