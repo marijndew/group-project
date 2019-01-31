@@ -24,8 +24,8 @@ app.get('/', (req, res) => {
     if (accessToken) {
         res.redirect('/profile')
     }
-
     res.render('index')
+
 })
 
 // Authorization process
@@ -57,6 +57,24 @@ app.get('/profile', (req, res) => {
     ig.use({
         access_token: accessToken
     });
+
+    ig.user_media_recent(`${accessToken.split('.')[0]}`,
+        function (err, result, pagination, remaining, limit) {
+            if (err) res.json(err);
+            // pass the json file retrieved to our ejs template
+
+            let places = [];
+            result.forEach((insta) => {
+                places.push([insta.images.thumbnail.url, insta.location.latitude, insta.location.longitude])
+            })
+            /*
+                        console.log(places);
+            */
+
+            res.render('profile', {
+                places: places
+            })
+        });
     console.log(`Your access token is ${accessToken}`);
 
     ig.user_media_recent(`${accessToken.split('.')[0]}`,
@@ -70,4 +88,15 @@ app.get('/profile', (req, res) => {
         });
 });
 
-app.listen(port, console.log(`Eavesdropping on port ${port}`));
+// Manages the log-out button
+/*app.get('/logout', (req, res) => {
+    if (accessToken.length != 0) {
+        accessToken = '';
+        res.redirect('/');
+    } else {
+        res.redirect('/');
+    }
+});*/
+
+app.listen(port, console.log(`Eavesdropping on port ${port}`)); >>>
+>>> > 64 bb20d4564b4b6ec2e1b7c1457bee664c56fdc4
