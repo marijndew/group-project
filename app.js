@@ -76,16 +76,6 @@ app.get('/profile', (req, res) => {
             })
         });
     console.log(`Your access token is ${accessToken}`);
-
-    ig.user_media_recent(`${accessToken.split('.')[0]}`,
-        function (err, result, pagination, remaining, limit) {
-            if (err) res.json(err);
-            // pass the json file retrieved to our ejs template
-            console.log(result);
-            res.render('profile', {
-                instagram: result
-            });
-        });
 });
 
 // Manages the log-out button
@@ -98,5 +88,4 @@ app.get('/profile', (req, res) => {
     }
 });*/
 
-app.listen(port, console.log(`Eavesdropping on port ${port}`)); >>>
->>> > 64 bb20d4564b4b6ec2e1b7c1457bee664c56fdc4
+app.listen(port, console.log(`Eavesdropping on port ${port}`));
