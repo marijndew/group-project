@@ -62,14 +62,16 @@ app.get('/profile', (req, res) => {
         function (err, result, pagination, remaining, limit) {
             if (err) res.json(err);
             // pass the json file retrieved to our ejs template
+            console.log(result);
 
             let places = [];
+
             result.forEach((insta) => {
-                places.push([insta.images.thumbnail.url, insta.location.latitude, insta.location.longitude])
+                if (insta.location && insta.type === "image" || insta.type === "carousel") {
+                    places.push([insta.images.thumbnail.url, insta.location.latitude, insta.location.longitude])
+                }
             })
-            /*
-                        console.log(places);
-            */
+            console.log(places);
 
             res.render('profile', {
                 places: places
@@ -77,6 +79,7 @@ app.get('/profile', (req, res) => {
         });
     console.log(`Your access token is ${accessToken}`);
 });
+
 
 // Manages the log-out button
 /*app.get('/logout', (req, res) => {
@@ -86,6 +89,7 @@ app.get('/profile', (req, res) => {
     } else {
         res.redirect('/');
     }
-});*/
+});
+*/
 
 app.listen(port, console.log(`Eavesdropping on port ${port}`));
