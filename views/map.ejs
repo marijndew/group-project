@@ -3,34 +3,76 @@
 
 <head>
   <!-- <link rel='stylesheet' href='public/css/style.css' type='text/css'> -->
-  </link>
   <style>
     /* Optional: Makes the sample page fill the window. */
-  #map {
-    height: 100%;
-  }
-  /* Optional: Makes the sample page fill the window. */
-  html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
+    #map {
+        height: 100%;
+        width: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    .logo {
+      position: absolute;
+      top: 1%;
+      left: 2%;
+      z-index: 5;
     }
-  #floating-panel {
-    position: absolute;
-    top: 100px;
-    left: 5%;
-    z-index: 5;
-    background-color: #fff;
-    opacity: 0.8;
-    padding: 5px;
-    border: 0px solid #999;
-    border-radius: 7px;
-    text-align: center;
-    font-family: 'Roboto','sans-serif';
-    line-height: 30px;
-    padding-left: 10px;
-    margin-left: -52px;
-  }
+    .floating-panel-nav{
+      position: absolute;
+      top: 5%;
+      left: 10%;
+      right: 10%;
+      z-index: 4;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 1%;
+      border: 1% solid rgb(233, 231, 231);
+      border-radius: 7px;
+      text-align: center;
+      font-family: 'Roboto','sans-serif';
+      line-height: 2%;
+      padding-left: 10px;
+      margin-left: -52px;
+    }
+    .floating-panel-left-top {
+      position: absolute;
+      top: 25%;
+      left: 5%;
+      z-index: 5;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 1%;
+      border: 1px solid rgb(233, 231, 231);
+      border-radius: 7px;
+      text-align: center;
+      font-family: 'Roboto','sans-serif';
+      font-size: 1vw;
+      line-height: 3vh;
+      margin-left: -4%;
+    }
+    .footer{
+      position: absolute;
+      bottom: 0%;
+      left: 0%;
+      right: 0%;
+      z-index: 4;
+      background-color: rgba(255, 255, 255, 0.3);
+      text-align: center;
+      font-family: 'Roboto','sans-serif';
+      font-weight: bold;
+      font-size: 1vw;
+      color: black;
+      line-height: 1vw;
+    }
+    .fullscreen-button {
+      position: absolute;
+      bottom: 2%;
+      left: 85%;
+      right: 0%;
+      z-index: 5;
+    }
   </style>
 </head>
 
@@ -54,7 +96,6 @@ function initMap() {
          // Add a marker clusterer to manage the markers.
       var markerCluster = new MarkerClusterer(map, markers,
           {imagePath: 'images/p'});
-    }
     
       var places = [
         ['B. Building 2', 52.340999, 4.823576],
@@ -90,10 +131,31 @@ function initMap() {
         }
       }
   </script>
-  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
-  </script>
-  <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-ZNLSg6yH-H4rbW7iPI1zT2hjhWUs_pI&callback=initMap">
-  </script>
-</script>
+ <script src="images/markerclusterer.js">
+ </script>
+ <script async defer
+ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-ZNLSg6yH-H4rbW7iPI1zT2hjhWUs_pI&callback=initMap">
+ </script>
+ <script>
+ function toggleFullScreen() {
+     if ((document.fullScreenElement && document.fullScreenElement !== null) ||    
+      (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+       if (document.documentElement.requestFullScreen) {  
+         document.documentElement.requestFullScreen();  
+       } else if (document.documentElement.mozRequestFullScreen) {  
+         document.documentElement.mozRequestFullScreen();  
+       } else if (document.documentElement.webkitRequestFullScreen) {  
+         document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);  
+       }  
+     } else {  
+       if (document.cancelFullScreen) {  
+         document.cancelFullScreen();  
+       } else if (document.mozCancelFullScreen) {  
+         document.mozCancelFullScreen();  
+       } else if (document.webkitCancelFullScreen) {  
+         document.webkitCancelFullScreen();  
+       }  
+     }  
+   }
+ </script>
 </html>

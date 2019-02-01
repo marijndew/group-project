@@ -8,6 +8,7 @@
     /* Optional: Makes the sample page fill the window. */
     #map {
         height: 100%;
+        width: 100%;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -15,64 +16,91 @@
         margin: 0;
         padding: 0;
       }
-      #logo {
-        position: absolute;
-        top: 20px;
-        left: 2%;
-        z-index: 5;
-      }
-      #floating-panel-left-top {
-        position: absolute;
-        top: 200px;
-        left: 5%;
-        z-index: 5;
-        background-color: #fff;
-        opacity: 0.8;
-        padding: 5px;
-        border: 1px solid rgb(233, 231, 231);
-        border-radius: 7px;
-        text-align: center;
-        font-family: 'Roboto','sans-serif';
-        line-height: 30px;
-        padding-left: 10px;
-        margin-left: -52px;
-      }
-      #floating-panel-left-bottom{
-        position: absolute;
-        top: 50px;
-        left: 20%;
-        right: 30%;
-        z-index: 5;
-        background-color: #fff;
-        opacity: 0.8;
-        padding: 5px;
-        border: 1px solid rgb(233, 231, 231);
-        border-radius: 7px;
-        text-align: center;
-        font-family: 'Roboto','sans-serif';
-        line-height: 30px;
-        padding-left: 10px;
-        margin-left: -52px;
-      }
+    .logo {
+      position: absolute;
+      top: 1%;
+      left: 2%;
+      z-index: 5;
+    }
+    .floating-panel-nav{
+      position: absolute;
+      top: 5%;
+      left: 10%;
+      right: 10%;
+      z-index: 4;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 1%;
+      border: 1% solid rgb(233, 231, 231);
+      border-radius: 7px;
+      text-align: center;
+      font-family: 'Roboto','sans-serif';
+      line-height: 2%;
+      padding-left: 10px;
+      margin-left: -52px;
+    }
+    .floating-panel-left-top {
+      position: absolute;
+      top: 25%;
+      left: 5%;
+      z-index: 5;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 1%;
+      border: 1px solid rgb(233, 231, 231);
+      border-radius: 7px;
+      text-align: center;
+      font-family: 'Roboto','sans-serif';
+      font-size: 1vw;
+      line-height: 3vh;
+      margin-left: -4%;
+    }
+    .footer{
+      position: absolute;
+      bottom: 0%;
+      left: 0%;
+      right: 0%;
+      z-index: 4;
+      background-color: rgba(255, 255, 255, 0.3);
+      text-align: center;
+      font-family: 'Roboto','sans-serif';
+      font-weight: bold;
+      font-size: 1vw;
+      color: black;
+      line-height: 1vw;
+    }
+    .fullscreen-button {
+      position: absolute;
+      bottom: 2%;
+      left: 85%;
+      right: 0%;
+      z-index: 5;
+    }
   </style>
 </head>
 
 <body>
-  <div id="map"></div>
-  <div id="logo"><img src="images/wanderlust.png" height="152" width="125"></div>
-  <div id="floating-panel-left-top">
-      <p>This is a <b>sample menu</b>,<br> This could <br>show statistics<br>based on the coordinates<br></p>
+<div id="map"></div>
+  <div class="logo"><img src="images/logo.png" height="152" width="125"></div>
+  <div class="floating-panel-left-top">
+      <p> <b>Statistics</b><hr><img src="images/statistics/world.png">Countries Visited: <b>0</b><br>KM travelled: <b>0</b><br>more more more!<br></p>
     </div>
-  <div id="floating-panel-left-bottom">
-      <p>This is a <b>sample menu</b>,<br></p>
+  <div class="floating-panel-nav">
+      <p>This is a <b>sample menu</b><br></p>
   </div>
+  <input class="fullscreen-button" type="button" value="Toggle Fullscreen" onclick="toggleFullScreen()">
+  <div class="footer">
+    <p>© Wanderlust 2019</b></p>
+</div>
 </body>
   <script>
 
+var marker;
+
     function initMap() {
       var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
-        center: {lat: -41.133927, lng: 160.368264},
+        zoom: 3,
+        maxZoom: 12,
+        minZoom: 3,
+        center: {lat: 47.522278, lng: 21.077278},
         disableDefaultUI: true
       });
 
@@ -132,5 +160,26 @@
   <script async defer
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-ZNLSg6yH-H4rbW7iPI1zT2hjhWUs_pI&callback=initMap">
   </script>
-</script>
+  <script>
+  function toggleFullScreen() {
+      if ((document.fullScreenElement && document.fullScreenElement !== null) ||    
+       (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+        if (document.documentElement.requestFullScreen) {  
+          document.documentElement.requestFullScreen();  
+        } else if (document.documentElement.mozRequestFullScreen) {  
+          document.documentElement.mozRequestFullScreen();  
+        } else if (document.documentElement.webkitRequestFullScreen) {  
+          document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);  
+        }  
+      } else {  
+        if (document.cancelFullScreen) {  
+          document.cancelFullScreen();  
+        } else if (document.mozCancelFullScreen) {  
+          document.mozCancelFullScreen();  
+        } else if (document.webkitCancelFullScreen) {  
+          document.webkitCancelFullScreen();  
+        }  
+      }  
+    }
+  </script>
 </html>
