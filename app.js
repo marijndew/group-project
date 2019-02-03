@@ -5,6 +5,7 @@ const port = process.env.PORT || 3000;
 
 //location of our static files(css,js,etc..)
 app.use(express.static(__dirname + '/views'));
+app.use('/public', express.static(__dirname + '/public'));
 
 //set the view engine to use ejs
 app.set('view engine', 'ejs');
@@ -63,13 +64,16 @@ app.get('/profile', (req, res) => {
             if (err) res.json(err);
             // pass the json file retrieved to our ejs template
 
+            console.log(result);
+
             let places = [];
+
             result.forEach((insta) => {
-                places.push([insta.images.thumbnail.url, insta.location.latitude, insta.location.longitude])
+                if (insta.location && insta.type === "image" || insta.type === "carousel") {
+                    places.push([insta.images.thumbnail.url, insta.location.latitude, insta.location.longitude])
+                }
             })
-            /*
-                        console.log(places);
-            */
+            console.log(places);
 
             res.render('profile', {
                 places: places
@@ -86,6 +90,7 @@ app.get('/profile', (req, res) => {
     } else {
         res.redirect('/');
     }
-});*/
+});
+*/
 
 app.listen(port, console.log(`Eavesdropping on port ${port}`));
