@@ -2,12 +2,34 @@ const express = require('express');
 const app = express();
 const ig = require('instagram-node').instagram();
 const port = process.env.PORT || 3000;
+const cookieParser = require('cookie-parser');
+const expressSession = require('express-session');
 
 //location of our static files(css,js,etc..)
 app.use(express.static(__dirname + '/views'));
 
 //set the view engine to use ejs
 app.set('view engine', 'ejs');
+
+app.use(express.urlencoded({
+    extended: true
+}));
+app.use(cookieParser());
+app.use(expressSession({
+    name: 'userCookie',
+    secret: 'secretSignature',
+    resave: false,
+    saveUninitialized: false
+}));
+/*app.use((req, res, next) => {
+    if (req.cookies.userCookie && !req.session.user) {
+        res.clearCookie('userCookie');
+    }
+    next();
+});*/
+
+
+
 // The redirect uri we set when registering our application
 const redirectUri = 'http://localhost:3000/handleAuth';
 // The access token retrieved from the authentication process
@@ -24,7 +46,6 @@ app.get('/', (req, res) => {
     if (accessToken) {
         res.redirect('/profile')
     }
-
     res.render('index')
 })
 
@@ -50,7 +71,7 @@ app.get('/handleAuth', (req, res) => {
 });
 
 app.get('/profile', (req, res) => {
-    if (accessToken === undefined || !accessToken) {
+    if (accessToken === '' || !accessToken && req.cookies.userCookie) {
         res.redirect('/')
     }
     // Create a new instance of the use method which contains the access token gotten
@@ -72,12 +93,11 @@ app.get('/profile', (req, res) => {
 
 // GET route for logging out
 app.get('/logout', (req, res) => {
-
+    req.session.user && req.cookies.userCookie;
     res.clearCookie('userCookie');
     console.log('COOKIE HAS BEEN DELETED');
     res.redirect('https://www.instagram.com/accounts/logout/');
 });
-
 
 
 app.listen(port, console.log(`Eavesdropping on port ${port}`));
