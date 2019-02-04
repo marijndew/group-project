@@ -67,7 +67,7 @@ app.get('/profile', (req, res) => {
 
       result.forEach((insta) => {
         if (insta.location && insta.type === "image" || insta.type === "carousel") {
-          places.push([insta.images.thumbnail.url, insta.location.latitude, insta.location.longitude])
+          places.push([insta.images.thumbnail.url, insta.location.latitude, insta.location.longitude, insta.images.standard_resolution.url])
         }
       });
 
