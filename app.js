@@ -62,9 +62,6 @@ app.get('/profile', (req, res) => {
     ig.user_media_recent(`${accessToken.split('.')[0]}`,
         function (err, result, pagination, remaining, limit) {
             if (err) res.json(err);
-            // pass the json file retrieved to our ejs template
-
-            console.log(result);
 
             let places = [];
 
@@ -72,14 +69,12 @@ app.get('/profile', (req, res) => {
                 if (insta.location && insta.type === "image" || insta.type === "carousel") {
                     places.push([insta.images.thumbnail.url, insta.location.latitude, insta.location.longitude])
                 }
-            })
-            console.log(places);
+            });
 
             res.render('profile', {
                 places: places
             })
         });
-    console.log(`Your access token is ${accessToken}`);
 });
 
 // Manages the log-out button
