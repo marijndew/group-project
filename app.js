@@ -79,7 +79,7 @@ app.get('/profile', (req, res) => {
 
 
 // Manages the log-out button
-/*app.get('/logout', (req, res) => {
+app.get('/logout', (req, res) => {
     if (accessToken.length != 0) {
         accessToken = '';
         res.redirect('/');
@@ -87,6 +87,6 @@ app.get('/profile', (req, res) => {
         res.redirect('/');
     }
 });
-*/
+
 
 app.listen(port, console.log(`Eavesdropping on port ${port}`));
