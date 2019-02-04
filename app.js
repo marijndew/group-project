@@ -5,6 +5,7 @@ const port = process.env.PORT || 3000;
 
 //location of our static files(css,js,etc..)
 app.use(express.static(__dirname + '/views'));
+app.use('/public', express.static(__dirname + '/public'));
 
 //set the view engine to use ejs
 app.set('view engine', 'ejs');
@@ -62,6 +63,8 @@ app.get('/profile', (req, res) => {
         function (err, result, pagination, remaining, limit) {
             if (err) res.json(err);
             // pass the json file retrieved to our ejs template
+            console.log(result);
+
             console.log(result);
 
             let places = [];

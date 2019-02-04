@@ -12,5 +12,6 @@
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "instagram-node": "^0.5.8"
-  }
+  },
+  "devDependencies": {}
 }
