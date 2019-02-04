@@ -77,6 +77,7 @@ app.get('/profile', (req, res) => {
         });
 });
 
+
 // Manages the log-out button
 /*app.get('/logout', (req, res) => {
     if (accessToken.length != 0) {

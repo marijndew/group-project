@@ -5,28 +5,130 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Wanderlust</title>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            font-family: 'Roboto', 'sans-serif';
+            overflow: hidden
+        }
+
+        .logo {
+            position: absolute;
+            top: 1%;
+            left: 2%;
+            z-index: 5;
+        }
+
+
+        .title-and-pay-off {
+            /*
+            font-weight: bold;
+*/
+            text-align: center;
+            margin: 0 auto;
+            color: white;
+        }
+
+        .title {
+            font-size: ;
+        }
+
+        .floating-panel-center {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 30%;
+            bottom: 0;
+            width: 40%;
+            height: 30%;
+            min-width: 300px;
+            margin: 0 auto;
+            z-index: 5;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 1%;
+            border: 1px solid rgb(233, 231, 231);
+            border-radius: 7px;
+            text-align: center;
+            font-size: 1vw;
+            line-height: 3vh;
+            color: black;
+        }
+
+        .floating-panel-center button {
+            background-color: green;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+
+        .floating-panel-center button:hover {
+            background-color: darkgreen;
+            /* Green */
+            color: white;
+            cursor: pointer;
+        }
+
+        .map-picture {
+            position: relative;
+            left: 15%;
+            right: 0%;
+            top: 40%;
+            bottom: 0;
+            margin: 0 auto;
+            z-index: 0;
+            transform: rotate(-15deg)
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0%;
+            left: 0%;
+            right: 0%;
+            z-index: 4;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1vw;
+            color: white;
+            line-height: 1vw;
+        }
+
+    </style>
 </head>
-<style>
-    #map {
-        height: 100%;
-    }
-
-    /* Optional: Makes the sample page fill the window. */
-    html,
-    body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-    }
-
-</style>
 
 <body>
+    <div class="title-and-pay-off">
+        <div class="title">
+            <h1>WANDERLUST</h1>
+        </div>
+        <div class="pay-off">
+            <h2>"not all those who wander are lost"</h2>
+            <p><i>-- J.R.R. Tolkien</i></p>
+        </div>
+    </div>
+    <div class="logo"><img src="public/images/logo.png" height="152" width="125"></div>
+    <div class="floating-panel-center">
+        <h2>Welcome to Wanderlust!</h2>
+        <h3>THE app that enables you to showcase your personal travel exploits on an interactive world map, using your Instagram. It's plug 'n play! Just log in and your photos (provided you geotagged them) will show up on the map. Give it a try and don't forget to share it with your friends!
 
-    <center>
-        <a href="/authorize"><button>click me to log in</button></a>
-    </center>
+        </h3>
+        <a href="/authorize"><button>Click here to log in via Instagram</button></a>
+    </div>
+    <div class="map-picture"><img src="public/images/map-picture.png"></div>
+
+    <div class="footer">
+        <p><b>© Wanderlust 2019</b></p>
+    </div>
 </body>
 
 </html>
