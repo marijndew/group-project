@@ -53,8 +53,6 @@ app.get('/', (req, res) => {
         res.redirect('/profile')
     }
     res.render('index')
-
-
 })
 
 // Authorization process
@@ -97,6 +95,19 @@ app.get('/handleAuth', (req, res) => {
     });
 });
 
+app.get('/handleAuth', (req, res) => {
+    // Retrieves the code that was passed along as a query to the '/handleAuth' route and uses this code to construct an access token
+    ig.authorize_user(req.query.code, redirectUri, function (err, result) {
+        if (err) res.send(err);
+        // Store this access_token in a global variable
+        accessToken = result.access_token;
+
+        // Now the user can be redirected to his account
+        res.redirect('/profile');
+    });
+});
+
+
 app.get('/profile', (req, res) => {
     if (!req.session.user || !req.cookies.userCookie) {
         res.redirect('/')
@@ -114,7 +125,7 @@ app.get('/profile', (req, res) => {
 
             result.forEach((insta) => {
                 if (insta.location && insta.type === "image" || insta.type === "carousel") {
-                    places.push([insta.images.thumbnail.url, insta.location.latitude, insta.location.longitude])
+                    places.push([insta.images.thumbnail.url, insta.location.latitude, insta.location.longitude, insta.images.standard_resolution.url])
                 }
             });
 
