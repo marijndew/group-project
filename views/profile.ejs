@@ -115,11 +115,11 @@
             setMarkers(map);
         }
 
-        let markers = ""
+        let markers;
 
         function setMarkers(map) {
             var markerCluster = new MarkerClusterer(map, [], {
-            imagePath: 'images/p'
+            imagePath: 'public/images/cluster/p'
         });
 
             finalResult.forEach((place) => {
@@ -142,16 +142,25 @@
                     position: myLatlng,
                     map: map,
                     icon: image,
-                    shape: shape
+                    shape: shape,
+                    animation: google.maps.Animation.DROP
                 });
             markerCluster.addMarker(marker);
             })
         }
 
+        function toggleBounce() {
+  if (marker.getAnimation() !== null) {
+    marker.setAnimation(null);
+  } else {
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+  }
+}
+
     </script>
     <script src="public/js/markerclusterer.js"></script>
     </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key==initMap">
     </script>
      
       <script>
