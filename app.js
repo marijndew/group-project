@@ -75,6 +75,23 @@ app.get('/profile', (req, res) => {
         places: places
       })
     });
+
+  ig.user_media_recent(`${accessToken.split('.')[0]}`,
+    function(err, result, pagination, remaining, limit) {
+      if (err) res.json(err);
+
+      let places = [];
+
+      result.forEach((insta) => {
+        if (insta.location && insta.type === "image" || insta.type === "carousel") {
+          places.push([insta.images.thumbnail.url, insta.location.latitude, insta.location.longitude])
+        }
+      });
+
+      res.render('profile', {
+        places: places
+      })
+    });
 });
 
 
