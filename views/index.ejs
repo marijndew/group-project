@@ -44,10 +44,10 @@
             position: fixed;
             left: 0;
             right: 0;
-            top: 30%;
+            top: 20%;
             bottom: 0;
             width: 40%;
-            height: 30%;
+            height: 40%;
             min-width: 300px;
             margin: 0 auto;
             z-index: 5;
@@ -87,16 +87,36 @@
             bottom: 0;
             margin: 0 auto;
             z-index: 0;
-            transform: rotate(-15deg)
+            transform: rotate(-16deg);
+            border-collapse: collapse;
+            background-color: black;
+
+
+
+        }
+
+        .mycorner {
+            width: 0px;
+            height: 0px;
+            border-top: #09F 17px solid;
+            /*inside part*/
+            border-right: white 25px solid;
+            /*outside part*/
+            position: absolute;
+            bottom: -1px;
+            right: -1px;
+            -webkit-box-shadow: -3px -2px 5px 0px rgba(0, 0, 0, 0.2);
+            -moz-box-shadow: -3px -2px 5px 0px rgba(0, 0, 0, 0.2);
+            box-shadow: -3px -2px 5px 0px rgba(0, 0, 0, 0.2);
         }
 
         .footer {
             position: absolute;
             bottom: 0%;
-            left: 0%;
+            left: 1%;
             right: 0%;
             z-index: 4;
-            text-align: center;
+            text-align: left;
             font-weight: bold;
             font-size: 1vw;
             color: white;
@@ -109,22 +129,24 @@
 <body>
     <div class="title-and-pay-off">
         <div class="title">
-            <h1>WANDERLUST</h1>
+            <h1>W A N D E R L U S T</h1>
         </div>
         <div class="pay-off">
             <h2>"not all those who wander are lost"</h2>
             <p><i>-- J.R.R. Tolkien</i></p>
         </div>
     </div>
-    <div class="logo"><img src="public/images/logo.png"></div>
+    <div class="logo"><img src="public/images/logo.png" height="152" width="125"></div>
     <div class="floating-panel-center">
         <h2>Welcome to Wanderlust!</h2>
-        <h3>THE app that enables you to showcase your personal travel exploits on an interactive world map, using your Instagram. It's plug 'n play! Just log in and your photos (provided you geotagged them) will show up on the map. Give it a try and don't forget to share it with your friends!
 
+        <h3>THE app that enables you to showcase your personal travel exploits on an interactive world map! It's plug 'n play! </h3>
+        <h3>1. Just log in using your Instagram account and your geotagged photos will show automatically up on the map!</h3>
+        <h3>2. Enjoy your personalized travel map, take a screenshot and share it with your friends!
         </h3>
         <a href="/authorize"><button>Click here to log in via Instagram</button></a>
     </div>
-    <div class="map-picture"><img src="public/images/map-picture.png" height="152" width="125"></div>
+    <div class="map-picture"><img src="public/images/map-picture.png"></div>
 
     <div class="footer">
         <p><b>© Wanderlust 2019</b></p>
