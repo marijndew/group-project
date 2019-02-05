@@ -115,7 +115,7 @@
     </div>
     <input class="fullscreen-button" type="button" value="Toggle Fullscreen" onclick="toggleFullScreen()">
     <form onsubmit="toggleFullscreen()">
-    <input class="fullscreen-button1" type="image" src="public/images/icons/full-screen-toggle.png" onclick="toggleFullscreen()"></form>
+        <input class="fullscreen-button1" type="image" src="public/images/icons/full-screen-toggle.png" onclick="toggleFullscreen()"></form>
     <div class="footer">
         <p>© Wanderlust 2019</p>
     </div>
@@ -223,7 +223,6 @@
             maxZoom: '10',
             zoomOnClick: 'true'
         });
-
         finalResult.forEach((place) => {
             var image = {
                 url: place[0],
@@ -248,12 +247,10 @@
             var contentString = `<div id="content">
         <img height="300px" src='${place[3]}'
       </div>`;
-
             var infowindow = new google.maps.InfoWindow({
                 content: contentString,
                 maxWidth: 300
             });
-
             marker.addListener('click', function() {
                 infowindow.open(map, marker);
             });
