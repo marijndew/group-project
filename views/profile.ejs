@@ -75,11 +75,22 @@
       line-height: 1vw;
     }
     .fullscreen-button {
+      /* all: unset; */
       position: absolute;
-      bottom: 2%;
+      bottom: 4%;
       left: 85%;
       right: 0%;
       z-index: 5;
+      border: none;
+    }
+    .fullscreen-button1 {
+      /* all: unset; */
+      position: absolute;
+      bottom: 6%;
+      left: 95%;
+      right: 0%;
+      z-index: 5;
+      border: none;
     }
     </style>
 
@@ -92,8 +103,8 @@
     </div>
     <div class="logo"><img src="public/images/logo.png" height="152" width="125"></div>
     <div class="floating-panel-left-top">
-        <p> <b>Statistics</b>
-            <img src="public/images/statistics/world.png">Countries Visited: <b>0</b><br>KM travelled: <b>0</b><br>more more more!<br></p>
+        <p> <b>Statistics</b><br>
+            <img src="public/images/icons/world.png">Countries Visited: <b>0</b><br>KM travelled: <b>0</b><br>more more more!<br></p>
     </div>
     <div class="floating-panel-nav">
         <ul>
@@ -103,10 +114,11 @@
         </ul>
     </div>
     <input class="fullscreen-button" type="button" value="Toggle Fullscreen" onclick="toggleFullScreen()">
+    <form onsubmit="toggleFullscreen()">
+    <input class="fullscreen-button1" type="image" src="public/images/icons/full-screen-toggle.png" onclick="toggleFullscreen()"></form>
     <div class="footer">
         <p>© Wanderlust 2019</p>
     </div>
-
 </body>
 
 <script>
@@ -207,7 +219,9 @@
 
     function setMarkers(map) {
         var markerCluster = new MarkerClusterer(map, [], {
-            imagePath: 'public/images/cluster/p'
+            imagePath: 'public/images/cluster/p',
+            maxZoom: '10',
+            zoomOnClick: 'true'
         });
 
         finalResult.forEach((place) => {
