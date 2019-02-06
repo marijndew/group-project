@@ -7,129 +7,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Wanderlust</title>
     <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-
-    <style>
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            background-color: black;
-            font-family: 'Roboto', 'sans-serif';
-            overflow: hidden;
-        }
-
-        .logo {
-            position: absolute;
-            top: 1%;
-            left: 2%;
-            z-index: 5;
-        }
-
-
-        .title-and-pay-off {
-            text-align: center;
-            margin: 0 auto;
-            color: white;
-        }
-
-        .title {
-            font-family: ;
-        }
-
-        .insta-logo {
-            position: absolute;
-            width: 220px;
-            height: 220px;
-            top: 20%;
-            right: 10%;
-        }
-
-        .pin-picture {
-            position: fixed;
-            bottom: -2%;
-            left: 50%;
-            z-index: 5;
-        }
-
-        .floating-panel-center {
-            position: fixed;
-            left: 0;
-            right: 0;
-            top: 22%;
-            bottom: 0;
-            width: 40%;
-            height: 40%;
-            min-width: 300px;
-            margin: 0 auto;
-            z-index: 5;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 1%;
-            border: 1px solid rgb(233, 231, 231);
-            border-radius: 7px;
-            text-align: center;
-            font-size: 1vw;
-            line-height: 3vh;
-            color: black;
-        }
-
-        .floating-panel-center button {
-            background-color: green;
-            border: none;
-            color: white;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-        }
-
-        .floating-panel-center button:hover {
-            background-color: darkgreen;
-            color: white;
-            cursor: pointer;
-        }
-
-        .map-picture {
-            position: relative;
-            left: 15%;
-            right: 0%;
-            top: 40%;
-            bottom: 0;
-            margin: 0 auto;
-            z-index: 0;
-            transform: rotate(-16deg);
-        }
-
-        .footer {
-            position: absolute;
-            bottom: 0%;
-            left: 1%;
-            right: 0%;
-            z-index: 4;
-            text-align: left;
-            font-weight: bold;
-            font-size: 1vw;
-            color: white;
-            line-height: 1vw;
-        }
-
-    </style>
+    <link href="public/css/style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-    <div class="logo"><img src="public/images/logo.png" height="152" width="125"></div>
+    <div class="index-logo"><img src="public/images/logo.png"></div>
 
     <div class="title-and-pay-off">
         <div class="title">
-            <h1>W A N D E R L U S T</h1>
         </div>
         <div class="pay-off">
-            <h2>"not all those who wander are lost"</h2>
-            <p><i>-- J.R.R. Tolkien</i></p>
+            <!--<br>
+<h3>"not all those who wander are lost"</h3>
+<p><i>-- J.R.R. Tolkien</i></p>-->
         </div>
     </div>
-    <div class="insta-logo"><img src="public/images/insta-logo.png" height="250" width="250"></div>
+    <!--
+<div class="insta-logo"><img src="public/images/insta-logo.png" height="250" width="250"></div>-->
     <div class="pin-picture"><img src="public/images/pin-picture.png"></div>
     <div class="floating-panel-center">
         <h2>Welcome to Wanderlust!</h2>
@@ -142,8 +36,8 @@
     </div>
     <div class="map-picture"><img src="public/images/map-picture.png"></div>
 
-    <div class="footer">
-        <p><b>© Wanderlust 2019</b></p>
+    <div class="index-footer">
+        <p>© Wanderlust 2019</p>
     </div>
 </body>
 
