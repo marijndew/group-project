@@ -14,17 +14,10 @@ app.use(express.urlencoded({
   extended: true
 }));
 
-
 // The redirect uri we set when registering our application
 const redirectUri = 'http://localhost:3000/handleAuth';
 // The access token retrieved from the authentication process
 let accessToken = '';
-
-ig.use({
-  client_id: 'f7667a6352a5470098470b4db58cd12e',
-  // Find a way to hide it from users
-  client_secret: '0c12c7680db4438a9d9704493c8c2a12'
-});
 
 // Log in page
 app.get('/', (req, res) => {
@@ -32,7 +25,7 @@ app.get('/', (req, res) => {
     res.redirect('/profile')
   }
   res.render('index')
-})
+});
 
 // Authorization process
 app.get('/authorize', (req, res) => {
@@ -49,12 +42,10 @@ app.get('/authorize', (req, res) => {
       // Find a way to hide it from users
       client_secret: '0c12c7680db4438a9d9704493c8c2a12'
     });
-
     return res.redirect(ig.get_authorization_url(redirectUri));
-  }
+  };
 
   myFunc();
-
 });
 
 app.get('/handleAuth', (req, res) => {
@@ -67,19 +58,6 @@ app.get('/handleAuth', (req, res) => {
     res.redirect('/profile');
   });
 });
-
-app.get('/handleAuth', (req, res) => {
-  // Retrieves the code that was passed along as a query to the '/handleAuth' route and uses this code to construct an access token
-  ig.authorize_user(req.query.code, redirectUri, function(err, result) {
-    if (err) res.send(err);
-    // Store this access_token in a global variable
-    accessToken = result.access_token;
-
-    // Now the user can be redirected to his account
-    res.redirect('/profile');
-  });
-});
-
 
 app.get('/profile', (req, res) => {
   if (!accessToken) {
@@ -108,12 +86,10 @@ app.get('/profile', (req, res) => {
     });
 });
 
-
 // GET route for logging out
 app.get('/logout', (req, res) => {
   accessToken = '';
   res.redirect('/');
 });
-
 
 app.listen(port, console.log(`Eavesdropping on port ${port}`));
