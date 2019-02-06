@@ -9,7 +9,6 @@ body {
     overflow: hidden;
 }
 
-
 /*CSS FOR INDEX.EJS*/
 .index-logo {
     position: absolute;
@@ -40,7 +39,6 @@ body {
     top: 20%;
     right: 10%;
 }*/
-
 .pin-picture {
     position: fixed;
     bottom: 0%;
@@ -128,7 +126,6 @@ body {
     line-height: 1vw;
 }
 
-
 /*CSS FOR PROFILE.EJS*/
 #map {
     height: 100%;
@@ -215,4 +212,15 @@ body {
     right: 0%;
     z-index: 5;
     border: none;
+}
+
+.logoutButton {
+    position: absolute;
+    top: 51px;
+    right: 55px;
+}
+
+.logoutButtonIcon {
+    width: 32px;
+    height: 32px;
 }
