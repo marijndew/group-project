@@ -9,7 +9,6 @@ body {
     overflow: hidden;
 }
 
-
 /*CSS FOR INDEX.EJS*/
 .index-logo {
     position: absolute;
@@ -40,11 +39,10 @@ body {
     top: 20%;
     right: 10%;
 }*/
-
 .pin-picture {
     position: fixed;
-    bottom: -2%;
-    left: 50%;
+    bottom: 0%;
+    left: 52%;
     z-index: 5;
 }
 
@@ -52,14 +50,14 @@ body {
     position: fixed;
     left: 0;
     right: 0;
-    top: 22%;
+    top: 20%;
     bottom: 0;
     width: 40%;
     height: 40%;
     min-width: 300px;
     margin: 0 auto;
     z-index: 5;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.85);
     padding: 1%;
     border: 1px solid rgb(233, 231, 231);
     border-radius: 7px;
@@ -67,34 +65,52 @@ body {
     font-size: 1vw;
     line-height: 3vh;
     color: black;
+    font-family: arial;
 }
 
 .floating-panel-center button {
-    background-color: green;
+    background-color: #009999;
     border: none;
     color: white;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 20px;
 }
 
 .floating-panel-center button:hover {
-    background-color: darkgreen;
+    background-color: #008080;
     color: white;
     cursor: pointer;
 }
 
 .map-picture {
     position: relative;
-    left: 15%;
+    left: 20%;
+    right: 0%;
+    top: 40%;
+    bottom: 0;
+    margin: 0 auto;
+    z-index: 1;
+    transform: rotate(-16deg);
+    border: solid;
+    border-width: 15px;
+    border-color: white;
+}
+
+.map-picture-back {
+    position: absolute;
+    left: 20%;
     right: 0%;
     top: 40%;
     bottom: 0;
     margin: 0 auto;
     z-index: 0;
-    transform: rotate(-16deg);
+    transform: rotate(-13deg);
+    border: solid;
+    border-width: 15px;
+    border-color: white;
 }
 
 .index-footer {
@@ -109,7 +125,6 @@ body {
     color: white;
     line-height: 1vw;
 }
-
 
 /*CSS FOR PROFILE.EJS*/
 #map {
@@ -197,4 +212,15 @@ body {
     right: 0%;
     z-index: 5;
     border: none;
+}
+
+.logoutButton {
+    position: absolute;
+    top: 51px;
+    right: 55px;
+}
+
+.logoutButtonIcon {
+    width: 32px;
+    height: 32px;
 }
