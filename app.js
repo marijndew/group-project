@@ -4,6 +4,7 @@ const ig = require('instagram-node').instagram();
 const port = process.env.PORT || 3000;
 const cookieParser = require('cookie-parser');
 const expressSession = require('express-session');
+const request = require('request');
 
 //location of our static files(css,js,etc..)
 app.use(express.static(__dirname + '/views'));
@@ -122,16 +123,34 @@ app.get('/profile', (req, res) => {
             if (err) res.json(err);
 
             let places = [];
+            let countryCode = [];
 
             result.forEach((insta) => {
                 if (insta.location && insta.type === "image" || insta.type === "carousel") {
-                    
+
                     places.push([insta.images.thumbnail.url, insta.location.latitude, insta.location.longitude, insta.images.standard_resolution.url])
                 }
+
+                let countryURL =
+                    `https://maps.googleapis.com/maps/api/geocode/json?latlng=${insta.location.latitude},${insta.location.longitude}&result_type=country&key=AIzaSyA-ZNLSg6yH-H4rbW7iPI1zT2hjhWUs_pI`
+
+                request(countryURL, function (error, response, body) {
+                    console.log('error:', error); // Print the error if one occurred
+                    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+                    /*console.log('body:', body); // Print the HTML for the Google homepage.*/
+                    let parseData = JSON.parse(body);
+                    let addressComponents = parseData.results[0].address_components[0]
+                    let shortName = addressComponents.short_name
+                    countryCode.push(shortName)
+                    console.log(countryCode)
+                });
             });
+            console.log(countryCode)
+            console.log(places)
 
             res.render('profile', {
-                places: places
+                places: places,
+                countryCode: countryCode
             })
         });
 });
