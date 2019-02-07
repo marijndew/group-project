@@ -18,7 +18,7 @@ body {
 }
 
 .index-logo img {
-    width: 350px;
+    width: 250px;
     height: auto;
 }
 
@@ -134,8 +134,8 @@ body {
 
 .logo {
     position: absolute;
-    top: 1%;
-    left: 2%;
+    top: -9%;
+    left: -2%;
     z-index: 5;
 }
 
@@ -216,8 +216,8 @@ body {
 
 .logoutButton {
     position: absolute;
-    top: 51px;
-    right: 55px;
+    top: 5%;
+    left: 95%;
 }
 
 .logoutButtonIcon {
