@@ -12,18 +12,17 @@
         <%=places%>
     </div>
     <div class="logo"><img src="public/images/logo.svg" height="350" width="250"></div>
-    <div class="floating-panel-left-top">
+    <!-- <div class="floating-panel-left-top">
         <p> <b>Statistics</b><br>
             <img src="public/images/icons/world.png">Countries Visited: <b>0</b><br>KM travelled: <b>0</b><br>more more more!<br></p>
-    </div>
-    <!-- <div class="floating-panel-nav">
+    </div> -->
+    <div class="floating-panel-nav">
     <ul>
-      <li>About</li>
-      <li>Something else</li>
-      <li><a href="/logout" img src="http://instagram.com/accounts/logout/">Log out</a></li>
-      <li><img src="http://instagram.com/accounts/logout/" width="0" height="0" /></li>
+      <li>  Countries Visited: 0</li>
+      <li>  KM travelled: 0</li>
+      <li>  Wanderlust Score: </li>
     </ul>
-  </div> -->
+  </div>
     <a href="/logout" class="logoutButton">
         <img src="http://instagram.com/accounts/logout/" style="display:none" />
         <input class="logoutButtonIcon" type="image" src="/public/images/icons/logout.png" />
@@ -41,6 +40,8 @@
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA-ZNLSg6yH-H4rbW7iPI1zT2hjhWUs_pI&callback=initMap">
 </script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 
 <script>
     function toggleFullScreen() {
@@ -64,6 +65,27 @@
         }
     }
 
+
 </script>
+
+<script>
+        // $(document).ready(function(){
+        //     $(".floating-panel-nav").hide();
+        //     $( ".logo" ).click(function() {
+        //         $(".floating-panel-nav").slide(1000)
+        //     });
+        // })
+        
+        $(document).ready(function(){
+                $(".floating-panel-nav").hide();
+                $(".logo").click(function(){
+                    $(".floating-panel-nav").animate({
+                        width: "toggle"
+                    },750);
+                });
+            });
+        
+        </script>
+        
 
 </html>
