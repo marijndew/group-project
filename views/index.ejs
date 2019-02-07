@@ -13,29 +13,30 @@
 </head>
 
 <body>
-        <div id="bgndVideo" class="player" 
-        data-property="{videoURL:'http://youtu.be/Yh0TnDrsIu8',containment:'body',autoPlay:true, mute:true, startAt:0, opacity:1, optimizeDisplay:1, abundance: 0.4}"></div>
-        <div class="index-logo"><img src="public/images/logo.png"></div>
+    <div id="bgndVideo" class="player" data-property="{videoURL:'http://youtu.be/Yh0TnDrsIu8',containment:'body',autoPlay:true, mute:true, startAt:0, opacity:1, optimizeDisplay:1, abundance: 0.4}"></div>
+    <div class="index-logo"><img src="public/images/logo.png"></div>
 
-        <div class="floating-panel-center">
-            <div class="floating-panel-center-title"><h1>Welcome to Wanderlust!</h1></div>
-            <br>
-            <h2>THE app that enables you to showcase your personal travel exploits on an interactive world map! It's plug 'n play! </h2><br><br>
-            </h2>
-            <a href="/authorize"><button>Click here to log in via Instagram</button></a>
+    <div class="floating-panel-center">
+        <div class="floating-panel-center-title">
+            <h1>Welcome to Wanderlust!</h1>
         </div>
-        <div class="map-picture"><img src="public/images/map-picture.png"></div>
-        <div class="map-picture-back"><img src="public/images/map-picture.png"></div>
-        <div class="index-footer">
-            <p>© Wanderlust 2019</p>
-        </div>
+        <br>
+        <h2>THE app that enables you to showcase your personal travel exploits on an interactive world map! It's plug 'n play! </h2><br><br>
+        <a href="/authorize"><button>Click here to log in via Instagram</button></a>
+    </div>
+    <div class="map-picture"><img src="public/images/map-picture.png"></div>
+    <div class="map-picture-back"><img src="public/images/map-picture.png"></div>
+    <div class="index-footer">
+        <p>© Wanderlust 2019</p>
+    </div>
 </body>
 
 <script>
-        jQuery(function () {
-            /* Initialize the player */
-            var myPlayer = jQuery(".player").YTPlayer();
-        });
-    </script>
-    
+    jQuery(function() {
+        /* Initialize the player */
+        var myPlayer = jQuery(".player").YTPlayer();
+    });
+
+</script>
+
 </html>
